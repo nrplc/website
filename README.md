@@ -17,5 +17,8 @@ Nothing reaches the live site without going through a reviewed pull request.
 
 - Live: S3 bucket `nrplc.org` (us-east-2) behind CloudFront, DNS in Route 53.
 - Staging: separate S3 bucket + CloudFront distribution.
-- GitHub signs in to AWS through a limited deploy role (OpenID Connect); no AWS keys are stored in this repo.
+- GitHub signs in to AWS through OpenID Connect; no AWS keys are stored in this repo. There are two
+  limited roles: `github-deploy-nrplc-staging` (staging bucket + distribution only, usable only by the
+  `staging` environment) and `github-deploy-nrplc-production` (live bucket + distribution only, usable
+  only by the `production` environment, which only deploys from `main`).
 - Short URLs like `/baker`, `/union`, `/bradford` are mapped to their pages by the CloudFront Function `nrplc-url-rewrite`.

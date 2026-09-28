@@ -220,7 +220,7 @@ body {
   position: relative;
   text-align: center;
   padding: 5rem 2rem 4rem;
-  background: var(--hero-image, url('images/hero-newriver.png')) center center / cover no-repeat;
+  background: var(--hero-image, url('images/hero-newriver.jpg')) center center / cover no-repeat;
   min-height: 420px;
   display: flex;
   align-items: center;

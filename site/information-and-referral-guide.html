@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Resource Guide — Baker, Bradford &amp; Union Counties</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:#1d2b45; --navy-light:#2a3f63; --orange:#e8732a; --orange-hover:#d4621d;
+    --grey-50:#fafafa; --grey-100:#f5f5f7; --grey-200:#e8e8ed; --grey-300:#d2d2d7;
+    --grey-500:#86868b; --grey-700:#424245; --grey-900:#1d1d1f; --white:#ffffff;
+    --radius:16px; --radius-sm:12px;
+    --shadow-sm:0 2px 8px rgba(0,0,0,.06); --shadow-md:0 4px 20px rgba(0,0,0,.08);
+    --transition:.25s cubic-bezier(.4,0,.2,1);
+  }
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--grey-100);color:var(--grey-900);line-height:1.5;font-size:17px}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);text-align:center;padding:80px 24px 64px;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:140%;height:120px;background:var(--grey-100);border-radius:50% 50% 0 0}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+  .hero p{font-size:clamp(1rem,2.5vw,1.25rem);opacity:.85;max-width:620px;margin:0 auto 28px;font-weight:400}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:100px;padding:8px 20px;font-size:.85rem;font-weight:500;letter-spacing:.02em}
+
+  /* Emergency Banner */
+  .emergency-banner{background:var(--orange);color:var(--white);text-align:center;padding:14px 24px;font-weight:600;font-size:.95rem;letter-spacing:.01em}
+  .emergency-banner a{color:var(--white);text-decoration:underline}
+
+  .container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Sticky Nav */
+  .nav-wrapper{position:sticky;top:0;z-index:100;background:rgba(245,245,247,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--grey-200)}
+  .nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+  .nav-inner::-webkit-scrollbar{display:none}
+  .nav-btn{flex-shrink:0;background:none;border:none;padding:14px 16px;font-size:.9rem;font-weight:500;color:var(--grey-500);cursor:pointer;border-bottom:2.5px solid transparent;transition:color var(--transition),border-color var(--transition);white-space:nowrap;font-family:inherit}
+  .nav-btn:hover{color:var(--grey-900)}
+  .nav-btn.active{color:var(--orange);border-bottom-color:var(--orange)}
+
+  /* County Filter Pills */
+  .filter-bar{display:flex;justify-content:center;gap:10px;padding:32px 24px 8px;flex-wrap:wrap}
+  .pill{padding:8px 22px;border-radius:100px;border:1.5px solid var(--grey-300);background:var(--white);font-size:.88rem;font-weight:500;color:var(--grey-700);cursor:pointer;transition:all var(--transition);font-family:inherit}
+  .pill:hover{border-color:var(--orange);color:var(--orange)}
+  .pill.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+  /* Sections */
+  .section{display:none;padding:24px 0 64px}
+  .section.active{display:block}
+  .section-header{text-align:center;margin-bottom:40px;padding-top:16px}
+  .section-header h2{font-size:2rem;font-weight:700;letter-spacing:-.02em;color:var(--navy)}
+  .section-header p{color:var(--grey-500);margin-top:8px;font-size:1.05rem}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .card{background:var(--white);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-sm);transition:box-shadow var(--transition),transform var(--transition);border:1px solid var(--grey-200);position:relative;overflow:hidden}
+  .card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--orange);opacity:0;transition:opacity var(--transition)}
+  .card:hover::before{opacity:1}
+  .card-county{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--white);background:var(--navy);border-radius:6px;padding:3px 10px;margin-bottom:12px}
+  .card h3{font-size:1.15rem;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;color:var(--grey-900)}
+  .card-desc{font-size:.93rem;color:var(--grey-700);margin-bottom:16px;line-height:1.55}
+  .card-meta{display:flex;flex-direction:column;gap:6px;font-size:.87rem;color:var(--grey-500)}
+  .card-meta span{display:flex;align-items:flex-start;gap:8px}
+  .card-meta .icon{flex-shrink:0;width:18px;text-align:center;color:var(--orange);font-style:normal}
+  .card-meta a{color:var(--orange);text-decoration:none;font-weight:500}
+  .card-meta a:hover{text-decoration:underline}
+
+  /* Callout */
+  .callout{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-radius:var(--radius);color:var(--white);padding:40px;text-align:center;margin:48px 0}
+  .callout h3{font-size:1.6rem;font-weight:700;margin-bottom:8px}
+  .callout p{opacity:.85;max-width:560px;margin:0 auto 20px}
+  .callout-number{display:inline-block;font-size:2.4rem;font-weight:800;background:var(--orange);padding:8px 36px;border-radius:100px;letter-spacing:.04em}
+
+  /* Footer */
+  footer{background:var(--navy);color:rgba(255,255,255,.7);text-align:center;padding:40px 24px;font-size:.85rem;line-height:1.7}
+  footer strong{color:var(--white);font-weight:600}
+  footer a{color:var(--orange);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .footer-divider{width:40px;height:2px;background:var(--orange);margin:16px auto;border-radius:2px}
+
+  @media(max-width:600px){.hero{padding:56px 20px 48px}.cards{grid-template-columns:1fr}.callout{padding:28px 20px}}
+</style>
+</head>
+<body>
+
+<!-- Emergency Banner -->
+<div class="emergency-banner">
+  In crisis? Call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline) · Dial <strong>211</strong> for 24/7 community resource referrals · Domestic Violence Hotline: <strong>1-800-799-7233</strong>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">Baker · Bradford · Union Counties</div>
+  <h1>Community Resource Guide</h1>
+  <p>Your connection to local support services — food, housing, health care, and more across the tri-county area.</p>
+</header>
+
+<!-- Sticky Navigation -->
+<nav class="nav-wrapper">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-target="food">Food</button>
+    <button class="nav-btn" data-target="housing">Housing</button>
+    <button class="nav-btn" data-target="health">Health</button>
+    <button class="nav-btn" data-target="mental-health">Mental Health</button>
+    <button class="nav-btn" data-target="children">Children &amp; Families</button>
+    <button class="nav-btn" data-target="elderly">Elderly Services</button>
+    <button class="nav-btn" data-target="employment">Employment</button>
+    <button class="nav-btn" data-target="education">Education</button>
+    <button class="nav-btn" data-target="legal">Legal Aid</button>
+    <button class="nav-btn" data-target="veterans">Veterans</button>
+    <button class="nav-btn" data-target="utilities">Utilities</button>
+    <button class="nav-btn" data-target="domestic-violence">Domestic Violence</button>
+    <button class="nav-btn" data-target="transportation">Transportation</button>
+    <button class="nav-btn" data-target="disability">Disability</button>
+    <button class="nav-btn" data-target="government">Government</button>
+    <button class="nav-btn" data-target="library">Library</button>
+  </div>
+</nav>
+
+<!-- County Filter -->
+<div class="filter-bar">
+  <button class="pill active" data-county="all">All Counties</button>
+  <button class="pill" data-county="baker">Baker County</button>
+  <button class="pill" data-county="bradford">Bradford County</button>
+  <button class="pill" data-county="union">Union County</button>
+  <button class="pill" data-county="regional">Regional</button>
+</div>
+
+<main class="container">
+
+<!-- ═══════════════ FOOD ═══════════════ -->
+<section class="section active" id="food">
+  <div class="section-header">
+    <h2>Food Assistance</h2>
+    <p>Food pantries, meal programs, and nutrition support</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford Ecumenical Ministries Food Pantry</h3>
+      <p class="card-desc">Serves residents of Bradford and Union counties. Each visit includes dry/canned goods, fresh meat, bread, and pastries. Families may receive food every 2 months.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 2226 N. Temple Avenue, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049643984">(904) 964-3984</a></span>
+        <span><i class="icon">🕐</i> Mon, Tue &amp; Thu — 1:00–4:00 PM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>True Vine Ministry</h3>
+      <p class="card-desc">Distributes food to all families in need. Also hosts a Mobile Food Pantry with Feeding Northeast Florida on the 3rd Thursday of each month at the Bradford County Fairgrounds. Provides limited utility assistance and gas vouchers.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 422 N. Saint Clair Street, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049649264">(904) 964-9264</a></span>
+        <span><i class="icon">🕐</i> Mon — 10:30–11:30 AM</span>
+        <span><i class="icon">🌐</i> <a href="https://truevinemin.org" target="_blank">truevinemin.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Lake Area Ministries</h3>
+      <p class="card-desc">Non-profit, non-denominational faith-based organization serving parts of Bradford, Clay, Putnam, and Alachua counties for 20+ years. Provides food pantry, medications, counseling, and rent/utility assistance. Must meet USDA standards for food assistance.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 131 NE Commercial Circle, Keystone Heights, FL 32656</span>
+        <span><i class="icon">📞</i> <a href="tel:3524732846">(352) 473-2846</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 10:00 AM–1:30 PM (except holidays)</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Salvation Army — Bradford &amp; Union Counties Service Unit</h3>
+      <p class="card-desc">Emergency services including food assistance for Bradford and Union county residents in need.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Starke, FL 32091</span>
+        <span><i class="icon">🌐</i> <a href="https://www.salvationarmyusa.org/fl/starke/bradford-and-union-counties-fl-service-unit/" target="_blank">salvationarmyusa.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County Minister's Association Food Pantry</h3>
+      <p class="card-desc">Serves families and individuals who have fallen on hard times or are recently unemployed. Provides groceries and pantry staples at no cost.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Glen St. Mary, FL 32040</span>
+        <span><i class="icon">📞</i> <a href="tel:9042591199">(904) 259-1199</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>The Children's Table</h3>
+      <p class="card-desc">Community food distribution held at Little Rock Church. Open to families and individuals in need.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 375 SE 7th Avenue, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864961916">(386) 496-1916</a></span>
+        <span><i class="icon">🕐</i> 1st &amp; 3rd Saturdays — 10:30–11:30 AM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Christ Central of Lake Butler Food Pantry</h3>
+      <p class="card-desc">Monthly food distribution for families and individuals in Union County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 16045 SW 69th Trail, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3867552525">(386) 755-2525</a></span>
+        <span><i class="icon">🕐</i> 3rd Tuesdays at 5:00 PM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>City of Lake Butler &amp; Farm Share</h3>
+      <p class="card-desc">Monthly food distribution at the Lake Butler Community Center. Free fresh produce and groceries on a first-come, first-served basis.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 155 NW 3rd Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864963401">(386) 496-3401</a></span>
+        <span><i class="icon">🕐</i> 2nd Saturdays — 9:00–11:00 AM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Union Senior Center — Congregate Meals</h3>
+      <p class="card-desc">Hot meals served to seniors through the Suwannee River Economic Council.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 665 SW 4th Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864962342">(386) 496-2342</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–12:00 PM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Feeding Northeast Florida</h3>
+      <p class="card-desc">Fights food insecurity across Baker, Bradford, and Union counties. Search their website by address or zip code to find the nearest distribution site.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://feedingnefl.org/find-food-now/" target="_blank">feedingnefl.org/find-food-now</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Catholic Charities — Lake City Regional Office</h3>
+      <p class="card-desc">Food pantry serving residents across the tri-county region including Union County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 553 NW Railroad Street, Lake City, FL 32055</span>
+        <span><i class="icon">📞</i> <a href="tel:3867549180">(386) 754-9180</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 7:30–11:30 AM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>SNAP &amp; Food Stamps (MyACCESS)</h3>
+      <p class="card-desc">Apply online for SNAP food assistance benefits through Florida's MyACCESS portal. One application covers food assistance, Medicaid, and temporary cash assistance.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8503004323">(850) 300-4323</a> (Customer Call Center)</span>
+        <span><i class="icon">🌐</i> <a href="https://myaccess.myflfamilies.com" target="_blank">myaccess.myflfamilies.com</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Feeding Northeast Florida — SNAP &amp; Medicaid Assistance</h3>
+      <p class="card-desc">Free help applying for SNAP and Medicaid benefits for residents of Baker, Bradford, and Union counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://feedingnefl.org/snap-medicaid-assistance/" target="_blank">feedingnefl.org/snap-medicaid-assistance</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ HOUSING ═══════════════ -->
+<section class="section" id="housing">
+  <div class="section-header">
+    <h2>Housing Assistance</h2>
+    <p>Emergency shelter, affordable housing, and rental assistance</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County SHIP Program</h3>
+      <p class="card-desc">State Housing Initiatives Partnership program providing funds for affordable homeownership and home rehabilitation for very low to moderate income households.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Baker County Administration, Macclenny, FL 32063</span>
+        <span><i class="icon">🌐</i> <a href="https://www.bakercountyfl.org" target="_blank">bakercountyfl.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Union CARES</h3>
+      <p class="card-desc">Assistance to help keep residents housed and employed. Applications available at the Union County Board of County Commissioner's Office or downloadable online.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 15 NE 1st Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864964241">(386) 496-4241</a></span>
+        <span><i class="icon">🕐</i> Tue &amp; Thu — 8:30 AM–4:00 PM</span>
+        <span><i class="icon">🌐</i> <a href="https://unioncounty-fl.gov/union-cares/" target="_blank">unioncounty-fl.gov/union-cares</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>NFCAA — Housing Counseling</h3>
+      <p class="card-desc">Northeast Florida Community Action Agency provides housing counseling, rental assistance, and homelessness prevention services for Baker and surrounding counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9043628052">(904) 362-8052</a></span>
+        <span><i class="icon">🌐</i> <a href="https://nfcaa.net" target="_blank">nfcaa.net</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>HUD Housing Resources — Florida</h3>
+      <p class="card-desc">Search for affordable housing, Section 8 vouchers, and public housing options through the U.S. Department of Housing and Urban Development.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.hud.gov/states/florida" target="_blank">hud.gov/states/florida</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Dial 211 for Emergency Shelter</h3>
+      <p class="card-desc">211 operators can connect you with emergency shelter, transitional housing, and rapid re-housing programs in the tri-county area.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:211">Dial 211</a></span>
+        <span><i class="icon">🌐</i> <a href="https://fl211.org" target="_blank">fl211.org</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ HEALTH ═══════════════ -->
+<section class="section" id="health">
+  <div class="section-header">
+    <h2>Health Services</h2>
+    <p>Medical care, dental, immunizations, and wellness programs</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Florida Dept. of Health — Bradford County</h3>
+      <p class="card-desc">Full-service county health department: adult &amp; child health, dental services, immunizations (free for children through age 18), WIC, Healthy Start, women's health, CPR classes, and school physicals.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1801 N. Temple Avenue, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049647732">(904) 964-7732</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–5:00 PM (limited 12–1 PM)</span>
+        <span><i class="icon">🌐</i> <a href="https://bradford.floridahealth.gov" target="_blank">bradford.floridahealth.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Florida Dept. of Health — Baker County</h3>
+      <p class="card-desc">Immunizations, WIC, dental services (including mobile Dental Bus), environmental health, and communicable disease prevention. Clinic services on a sliding fee scale. 24/7 emergency coverage.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 480 West Lowder St., Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9042596291">(904) 259-6291</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–5:00 PM</span>
+        <span><i class="icon">🌐</i> <a href="https://baker.floridahealth.gov" target="_blank">baker.floridahealth.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Florida Dept. of Health — Union County</h3>
+      <p class="card-desc">Immunizations, STD testing, family planning, Healthy Start, and preventive health services.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Lake Butler, FL 32054</span>
+        <span><i class="icon">🌐</i> <a href="https://union.floridahealth.gov" target="_blank">union.floridahealth.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>New River Health</h3>
+      <p class="card-desc">Federally qualified health center providing routine medical care for men, women, and children. Accepts insured and uninsured patients — acute/chronic care and preventive health. Sliding fee scale available.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Lake Butler, FL 32054</span>
+        <span><i class="icon">🌐</i> <a href="https://union.floridahealth.gov/programs-and-services/clinical-and-nutrition-services/new-river-health/index.html" target="_blank">New River Health — DOH Union</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Florida Mission of Mercy (FLA-MOM)</h3>
+      <p class="card-desc">Large-scale professional dental clinic providing care to any patient at no cost — serving the uninsured and underserved across Florida. Check schedule for nearest event.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.floridadental.org/foundation/programs" target="_blank">floridadental.org/foundation/programs</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Medicaid &amp; Health Insurance (MyACCESS)</h3>
+      <p class="card-desc">Apply for Medicaid and other health coverage through Florida's online portal. One application covers food assistance, Medicaid, and temporary cash assistance.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8503004323">(850) 300-4323</a></span>
+        <span><i class="icon">🌐</i> <a href="https://myaccess.myflfamilies.com" target="_blank">myaccess.myflfamilies.com</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ MENTAL HEALTH ═══════════════ -->
+<section class="section" id="mental-health">
+  <div class="section-header">
+    <h2>Mental Health &amp; Substance Abuse</h2>
+    <p>Counseling, crisis support, and recovery programs</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>988 Suicide &amp; Crisis Lifeline</h3>
+      <p class="card-desc">Free, confidential 24/7 support for anyone in suicidal crisis, mental health distress, or substance use crisis. Call or text 988.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:988"><strong>Call or text 988</strong></a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Meridian Behavioral Healthcare</h3>
+      <p class="card-desc">Serving North Central Florida since 1971 with mental health and substance use treatment services. 13 patient service centers across the region offering counseling, psychiatric care, and crisis stabilization.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.mbhci.org" target="_blank">mbhci.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>DOH Bradford — Mental Health Resources</h3>
+      <p class="card-desc">Bradford County Health Department provides mental health resource referrals and connects residents with local counseling and support services.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9049647732">(904) 964-7732</a></span>
+        <span><i class="icon">🌐</i> <a href="https://bradford.floridahealth.gov/programs-and-services/wellness-programs/mental-health/index.html" target="_blank">bradford.floridahealth.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>DOH Baker — Mental Health &amp; Substance Abuse</h3>
+      <p class="card-desc">Baker County Health Department provides mental health and substance abuse resource information and referrals.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9042596291">(904) 259-6291</a></span>
+        <span><i class="icon">🌐</i> <a href="https://baker.floridahealth.gov/programs-and-services/wellness-programs/mental-health/index.html" target="_blank">baker.floridahealth.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Lake Area Ministries — Counseling</h3>
+      <p class="card-desc">Counseling services available through Lake Area Ministries for residents of Bradford and surrounding counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 131 NE Commercial Circle, Keystone Heights, FL 32656</span>
+        <span><i class="icon">📞</i> <a href="tel:3524732846">(352) 473-2846</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Florida DCF — Substance Abuse &amp; Mental Health</h3>
+      <p class="card-desc">Connects Floridians with behavioral health services, substance abuse treatment, and crisis stabilization programs.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.myflfamilies.com/SAMH-Get-Help" target="_blank">myflfamilies.com/SAMH-Get-Help</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CHILDREN & FAMILIES ═══════════════ -->
+<section class="section" id="children">
+  <div class="section-header">
+    <h2>Children &amp; Families</h2>
+    <p>Parenting support, childcare assistance, and family programs</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Healthy Start Coalition — Connect Program</h3>
+      <p class="card-desc">Coordinated intake and referral for pregnant women, caregivers, and families with young children in Bradford, Union, and surrounding counties. One-stop entry to home visiting programs.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.chsandhsncfcoalitions.org/programs/connect/" target="_blank">chsandhsncfcoalitions.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Partnership for Strong Families</h3>
+      <p class="card-desc">Child welfare services, foster care support, and family strengthening programs across Baker, Bradford, and Union counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.pfsf.org" target="_blank">pfsf.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>WIC — Bradford County Health Dept.</h3>
+      <p class="card-desc">Women, Infants &amp; Children nutrition program: supplemental foods, nutrition education, and healthcare referrals for pregnant/postpartum women, infants, and children up to age 5.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1801 N. Temple Avenue, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049647732">(904) 964-7732</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>WIC — Baker County Health Dept.</h3>
+      <p class="card-desc">Women, Infants &amp; Children program providing nutrition support for qualifying families in Baker County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 480 West Lowder St., Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9042596291">(904) 259-6291</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County YMCA</h3>
+      <p class="card-desc">Youth programs, family activities, fitness, and community events for Baker County families.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 136 West Lowder Street, Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9047409622">(904) 740-9622</a></span>
+        <span><i class="icon">🕐</i> Mon–Sat — 9:00 AM–2:00 PM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Florida DCF — Temporary Cash &amp; Childcare Assistance</h3>
+      <p class="card-desc">Temporary cash assistance, food assistance (SNAP), Medicaid, and childcare assistance for qualifying families. Apply through MyACCESS.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8503004323">(850) 300-4323</a></span>
+        <span><i class="icon">🌐</i> <a href="https://www.myflfamilies.com" target="_blank">myflfamilies.com</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ ELDERLY SERVICES ═══════════════ -->
+<section class="section" id="elderly">
+  <div class="section-header">
+    <h2>Elderly Services</h2>
+    <p>Programs and support for seniors and caregivers</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County Council on Aging (BCCOA)</h3>
+      <p class="card-desc">Comprehensive senior services: home delivered meals, door-to-door transportation (ambulatory &amp; wheelchair), in-county shopping trips (Tue &amp; Thu), Wildcat shuttle to Duval County (3x daily M–F), Bobcat shuttle to Columbia County (2x daily M–F), and senior activities.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 9264 Buck Starling Rd., Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9042599315">(904) 259-9315</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 7:30 AM–5:00 PM</span>
+        <span><i class="icon">🌐</i> <a href="https://www.bakercoa.org" target="_blank">bakercoa.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Suwannee River Economic Council — Union County</h3>
+      <p class="card-desc">Community Care for the Elderly, Alzheimer's Disease Initiative (respite, case management, medical equipment), Elder Farmers' Market Nutrition, Emergency Home Energy Assistance for the Elderly, Home Care for the Elderly, congregate meals, and home delivered meals.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 665 SE 4th Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864962342">(386) 496-2342</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–5:00 PM</span>
+        <span><i class="icon">🌐</i> <a href="https://srecinc.org/service-areas/union-county/" target="_blank">srecinc.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Suwannee River Economic Council — Bradford County</h3>
+      <p class="card-desc">Aging programs including congregate meals, home delivered meals, homemaker services, respite care, specialized medical equipment, nutrition education, health support, and telephone reassurance for seniors.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1210 Andrews Circle, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049646696">(904) 964-6696</a></span>
+        <span><i class="icon">🕐</i> Client Services: ext. 22 · Senior Services: ext. 23</span>
+        <span><i class="icon">🌐</i> <a href="https://srecinc.org/service-areas/bradford-county/" target="_blank">srecinc.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Elder Helpline</h3>
+      <p class="card-desc">Florida's Elder Helpline connects seniors and caregivers with local aging services — meal programs, transportation, adult day care, and caregiver support.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:18009635337">1-800-963-5337</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ EMPLOYMENT ═══════════════ -->
+<section class="section" id="employment">
+  <div class="section-header">
+    <h2>Employment &amp; Training</h2>
+    <p>Job search, career training, and workforce programs</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>CareerSource Northeast Florida — Baker County</h3>
+      <p class="card-desc">Employment assistance, job training, resume help, and career counseling for Baker County residents.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1184 South 6th Street, Macclenny, FL 32063</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>CareerSource North Central Florida</h3>
+      <p class="card-desc">Workforce development services for Bradford and Union county residents — job placement, skills training, and career counseling.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.careersourcencfl.com" target="_blank">careersourcencfl.com</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>SREC — Family Self-Sufficiency Program</h3>
+      <p class="card-desc">Community Services Block Grant program: information &amp; referral, family self-sufficiency, case management, support services, and application assistance to other social service agencies.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://srecinc.org" target="_blank">srecinc.org</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ EDUCATION ═══════════════ -->
+<section class="section" id="education">
+  <div class="section-header">
+    <h2>Education &amp; Literacy</h2>
+    <p>GED, adult education, college programs, and literacy</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Santa Fe College — Adult Education</h3>
+      <p class="card-desc">Santa Fe College serves Bradford County. ABE/GED program builds skills in reading, language, critical thinking, and math to prepare for the GED test. ESOL program available. Classes cost $30 per semester.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.sfcollege.edu/prepare/adult-education/abe-ged.html" target="_blank">sfcollege.edu — ABE/GED</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County Adult Education — GED Testing</h3>
+      <p class="card-desc">GED preparation and testing services for Baker County residents.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 212 Sh Boulevard E, Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9042590403">(904) 259-0403</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Santa Fe College — Educational Talent Search</h3>
+      <p class="card-desc">Serves 9th–12th grade students at Union County High School with college preparation, tutoring, and educational support resources.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.sfcollege.edu/prepare/ets.html" target="_blank">sfcollege.edu — ETS</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Santa Fe College — Continuing Education</h3>
+      <p class="card-desc">Career training, professional development, and personal enrichment courses. Adult Education Pathways available for students in any adult education program.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.sfcollege.edu/continuinged/index.html" target="_blank">sfcollege.edu/continuinged</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ LEGAL AID ═══════════════ -->
+<section class="section" id="legal">
+  <div class="section-header">
+    <h2>Legal Aid</h2>
+    <p>Free and low-cost legal assistance</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Jacksonville Area Legal Aid (JALA)</h3>
+      <p class="card-desc">Free civil legal assistance for low-income residents of Baker, Bradford, and Union counties. Housing, family law, consumer protection, and benefits.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.jaxlegalaid.org" target="_blank">jaxlegalaid.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Three Rivers Legal Services</h3>
+      <p class="card-desc">Free legal assistance for qualifying residents in Bradford, Union, and surrounding counties — housing, family, and public benefits issues.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.trls.org" target="_blank">trls.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Florida Veterans Legal Helpline</h3>
+      <p class="card-desc">Free legal advice and referrals for eligible veterans. Benefits, discharge upgrades, and civil legal matters.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8664866161">(866) 486-6161</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ VETERANS ═══════════════ -->
+<section class="section" id="veterans">
+  <div class="section-header">
+    <h2>Veterans Services</h2>
+    <p>Benefits, healthcare, and support for veterans and their families</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Veterans Service Office</h3>
+      <p class="card-desc">Assists veterans and families with housing, VA benefits, and aid to widows/widowers.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9049666385">(904) 966-6385</a></span>
+        <span><i class="icon">🌐</i> <a href="https://www.bradfordcountyfl.gov/veteran" target="_blank">bradfordcountyfl.gov/veteran</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>VA North Florida / South Georgia Healthcare</h3>
+      <p class="card-desc">Veterans healthcare system serving the tri-county area. Includes the Veteran Justice Program for justice-involved veterans.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.va.gov/north-florida-health-care/" target="_blank">va.gov/north-florida-health-care</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Veterans Benefits Counseling</h3>
+      <p class="card-desc">C.H. "Bubba" Schlader provides veterans benefits counseling for Baker, Bradford, Union, and surrounding counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9042013611">(904) 201-3611</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ UTILITIES ═══════════════ -->
+<section class="section" id="utilities">
+  <div class="section-header">
+    <h2>Utilities Assistance</h2>
+    <p>Help with electric, water, and energy bills</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>NFCAA — LIHEAP (Baker County)</h3>
+      <p class="card-desc">Low Income Home Energy Assistance Program: past-due utility bills and deposits. Appointments required — scheduled up to 14 days in advance while funds are available.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9043628052">(904) 362-8052</a></span>
+        <span><i class="icon">🌐</i> <a href="https://nfcaa.net" target="_blank">nfcaa.net</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>SREC — Energy Assistance (Bradford County)</h3>
+      <p class="card-desc">LIHEAP utility bill assistance and Community Services Block Grant (CSBG) support services through the Suwannee River Economic Council's Bradford County office.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1210 Andrews Circle, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049646696">(904) 964-6696</a></span>
+        <span><i class="icon">🌐</i> <a href="https://srecinc.org/programs/emergency-assistance-self-sufficiency/" target="_blank">srecinc.org — Energy Assistance</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>SREC — LIWHAP (Union County)</h3>
+      <p class="card-desc">Low Income Household Water Assistance Program: financial assistance for water utility bills for qualifying Union County residents.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 665 SE 4th Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864962342">(386) 496-2342</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>True Vine Ministry — Utility Assistance</h3>
+      <p class="card-desc">Limited utility assistance and gas vouchers for families in need in Bradford County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9049649264">(904) 964-9264</a></span>
+        <span><i class="icon">🌐</i> <a href="https://truevinemin.org" target="_blank">truevinemin.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Lake Area Ministries — Rent &amp; Utility Assistance</h3>
+      <p class="card-desc">Provides rent and utility assistance for qualifying residents in Bradford and surrounding counties.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 131 NE Commercial Circle, Keystone Heights, FL 32656</span>
+        <span><i class="icon">📞</i> <a href="tel:3524732846">(352) 473-2846</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>NFCAA — Weatherization Assistance</h3>
+      <p class="card-desc">Free home weatherization: air infiltration testing, insulation repair, and HVAC improvements to reduce energy costs for qualifying households.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9043628052">(904) 362-8052</a></span>
+        <span><i class="icon">🌐</i> <a href="https://nfcaa.net" target="_blank">nfcaa.net</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Florida LIHEAP State Office</h3>
+      <p class="card-desc">Contact the state office for information about energy assistance programs in your county.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8507178450">(850) 717-8450</a></span>
+        <span><i class="icon">🌐</i> <a href="https://floridajobs.org/community-planning-and-development/community-services/low-income-home-energy-assistance-program" target="_blank">floridajobs.org</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ DOMESTIC VIOLENCE ═══════════════ -->
+<section class="section" id="domestic-violence">
+  <div class="section-header">
+    <h2>Domestic Violence &amp; Sexual Assault</h2>
+    <p>Safety planning, shelter, and survivor support</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Peaceful Paths Domestic Abuse Network</h3>
+      <p class="card-desc">Serving Alachua, Bradford, and Union counties since 1974. 24-hour crisis helpline, emergency shelter, support groups, financial assistance, food &amp; clothing pantries, legal team, and more. Advocates available 24/7 by phone or text.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:3523778255">(352) 377-8255</a> (24-hour helpline)</span>
+        <span><i class="icon">📞</i> Text: <a href="sms:3527270948">(352) 727-0948</a></span>
+        <span><i class="icon">📞</i> <a href="tel:18005001119">1-800-500-1119</a> (toll-free)</span>
+        <span><i class="icon">📍</i> 2100 NW 53rd Ave, Ste. A, Gainesville, FL 32653</span>
+        <span><i class="icon">🕐</i> Office: M, Th, F 9–5; Tu, W 9–6</span>
+        <span><i class="icon">🌐</i> <a href="https://www.peacefulpaths.org" target="_blank">peacefulpaths.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Hubbard House</h3>
+      <p class="card-desc">Domestic violence emergency shelter, safety planning, counseling, legal advocacy, and support services for survivors and children in Baker County and surrounding areas.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:9042592918">(904) 259-2918</a> (Baker County)</span>
+        <span><i class="icon">📞</i> <a href="tel:18005001119">1-800-500-1119</a> (24-hour hotline)</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>National Domestic Violence Hotline</h3>
+      <p class="card-desc">Free, confidential, 24/7 support. Safety planning, crisis intervention, and referrals to local resources.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:18007997233">1-800-799-7233</a></span>
+        <span><i class="icon">🌐</i> <a href="https://www.thehotline.org" target="_blank">thehotline.org</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ TRANSPORTATION ═══════════════ -->
+<section class="section" id="transportation">
+  <div class="section-header">
+    <h2>Transportation</h2>
+    <p>Public transit, medical transportation, and shuttle services</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Baker County Council on Aging — Transportation</h3>
+      <p class="card-desc">Door-to-door service (ambulatory &amp; wheelchair). Daily trips in Baker, Duval, Columbia, and Alachua counties. In-county shopping trips every Tue &amp; Thu. <strong>Wildcat Shuttle:</strong> Baker → Duval County, 3x daily M–F. <strong>Bobcat Shuttle:</strong> Baker → Columbia County, 2x daily M–F.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 9264 Buck Starling Rd., Macclenny, FL 32063</span>
+        <span><i class="icon">📞</i> <a href="tel:9042599315">(904) 259-9315</a></span>
+        <span><i class="icon">🌐</i> <a href="https://bakercoa.org/transportation/" target="_blank">bakercoa.org/transportation</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>SREC Transportation Service Center</h3>
+      <p class="card-desc">Public transportation for elderly and disadvantaged residents to doctors, medical facilities, meal sites, pharmacies, and shopping. Advance reservations required.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 255 SW 9th Avenue, Lake Butler, FL 32054</span>
+        <span><i class="icon">📞</i> <a href="tel:3864960624">(386) 496-0624</a></span>
+        <span><i class="icon">📞</i> Toll-free: <a href="tel:8444960624">(844) 496-0624</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>SREC Transportation — Bradford County</h3>
+      <p class="card-desc">Public transportation for elderly and disadvantaged residents to medical appointments, meal sites, and shopping in Bradford County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1210 Andrews Circle, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049646696">(904) 964-6696</a> ext. 25</span>
+        <span><i class="icon">📞</i> Toll-free: <a href="tel:8008245308">(800) 824-5308</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>211 — Transportation Referrals</h3>
+      <p class="card-desc">Dial 211 to find transportation options including medical transport, ride-share programs, and volunteer driver services.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:211">Dial 211</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ DISABILITY ═══════════════ -->
+<section class="section" id="disability">
+  <div class="section-header">
+    <h2>Disability Services</h2>
+    <p>Vocational rehabilitation, support services, and advocacy</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Vocational Rehabilitation — Unit 7A (Bradford &amp; Union)</h3>
+      <p class="card-desc">Federal-state program helping individuals with disabilities find and maintain employment. Services include career counseling, job training, job placement, and assistive technology.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 2627 NW 43rd St., Suite 201, Gainesville, FL</span>
+        <span><i class="icon">📞</i> <a href="tel:3867541675">(386) 754-1675</a></span>
+        <span><i class="icon">🌐</i> <a href="https://rehabworks.org" target="_blank">rehabworks.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Vocational Rehabilitation — Unit 8G (Baker County)</h3>
+      <p class="card-desc">Employment services for individuals with disabilities in Baker County — career planning, training, and job placement support.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 2255 Dunn Ave., Suite 609, Jacksonville, FL</span>
+        <span><i class="icon">📞</i> <a href="tel:9046965920">(904) 696-5920</a></span>
+        <span><i class="icon">🌐</i> <a href="https://rehabworks.org" target="_blank">rehabworks.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>Disability Rights Florida</h3>
+      <p class="card-desc">Legal advocacy and protection for people with disabilities in Florida. Can assist with discrimination, access to services, and rights violations.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://disabilityrightsflorida.org" target="_blank">disabilityrightsflorida.org</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>VR Ombudsman</h3>
+      <p class="card-desc">Impartial service for VR customers with concerns about their services. Free and confidential.</p>
+      <div class="card-meta">
+        <span><i class="icon">📞</i> <a href="tel:8665153692">1-866-515-3692</a> (toll-free)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ GOVERNMENT ═══════════════ -->
+<section class="section" id="government">
+  <div class="section-header">
+    <h2>Government Services</h2>
+    <p>County offices, emergency management, and public services</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Clerk of Court</h3>
+      <p class="card-desc">Clerk of the Circuit Court &amp; Comptroller — Denny Thompson. Court records, marriage licenses, passport applications, and official records.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 945 N. Temple Ave, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049666280">(904) 966-6280</a></span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–5:00 PM</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Property Appraiser</h3>
+      <p class="card-desc">Property records, exemptions (homestead, senior, disability), and property valuations.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 945 N. Temple Ave, Suite A, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049666216">(904) 966-6216</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Tax Collector</h3>
+      <p class="card-desc">Vehicle registration, driver's licenses, hunting/fishing licenses, property tax payments.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 945 N. Temple Ave, Suite B, Starke, FL 32091</span>
+        <span><i class="icon">🕐</i> Mon–Fri — 8:00 AM–4:30 PM</span>
+        <span><i class="icon">🌐</i> <a href="https://www.bradfordtaxcollector.com" target="_blank">bradfordtaxcollector.com</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Sheriff's Office</h3>
+      <p class="card-desc">Law enforcement, animal services, and emergency management for Bradford County. Sheriff Gordon Smith.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 945-B N. Temple Ave, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049662276">(904) 966-2276</a> (main)</span>
+        <span><i class="icon">📞</i> <a href="tel:9049666161">(904) 966-6161</a> (non-emergency)</span>
+        <span><i class="icon">📞</i> Animal Services: <a href="tel:9049666219">(904) 966-6219</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Emergency Management</h3>
+      <p class="card-desc">Disaster preparedness, severe weather information, and emergency response coordination for Bradford County.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 945-B N. Temple Ave, Starke, FL 32091</span>
+        <span><i class="icon">📞</i> <a href="tel:9049666336">(904) 966-6336</a></span>
+        <span><i class="icon">🌐</i> <a href="https://www.bradfordsheriff.org/emergency-management/" target="_blank">bradfordsheriff.org/emergency-management</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Union County Board of County Commissioners</h3>
+      <p class="card-desc">County government offices, permits, and public services.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 15 NE 1st Street, Lake Butler, FL 32054</span>
+        <span><i class="icon">🌐</i> <a href="https://unioncounty-fl.gov" target="_blank">unioncounty-fl.gov</a></span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>DCF Service Center — Baker County</h3>
+      <p class="card-desc">Gateway Service Center handles DCF applications (SNAP, Medicaid, cash assistance) for Baker County residents.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 5000-1 Norwood Avenue, Jacksonville, FL 32208</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>DCF Service Center — Bradford &amp; Union</h3>
+      <p class="card-desc">16th Avenue Complex handles DCF applications for Bradford and Union county residents.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> 1000 NE 16th Avenue, Building J, Gainesville, FL 32601</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ LIBRARY ═══════════════ -->
+<section class="section" id="library">
+  <div class="section-header">
+    <h2>Library Services</h2>
+    <p>Free access to books, internet, programs, and community resources</p>
+  </div>
+  <div class="cards">
+
+    <div class="card" data-county="baker">
+      <span class="card-county">Baker</span>
+      <h3>Emily Taber Public Library</h3>
+      <p class="card-desc">Baker County's public library — books, public computers, internet access, children's programs, and community meeting space.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> West Macclenny, FL</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="bradford">
+      <span class="card-county">Bradford</span>
+      <h3>Bradford County Public Library</h3>
+      <p class="card-desc">Full-service public library with books, digital resources, public computers, children's programming, and community events.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Starke, FL 32091</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="union">
+      <span class="card-county">Union</span>
+      <h3>Mary C. Brown Public Library</h3>
+      <p class="card-desc">Union County's public library — books, internet access, community programs, and digital resources.</p>
+      <div class="card-meta">
+        <span><i class="icon">📍</i> Lake Butler, FL 32054</span>
+      </div>
+    </div>
+
+    <div class="card" data-county="regional">
+      <span class="card-county" style="background:var(--orange)">Regional</span>
+      <h3>New River Public Library Cooperative</h3>
+      <p class="card-desc">Supporting and enhancing public library services across Baker, Bradford, and Union counties since 1996.</p>
+      <div class="card-meta">
+        <span><i class="icon">🌐</i> <a href="https://www.newriverlibrary.org" target="_blank">newriverlibrary.org</a></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ 211 CALLOUT ═══════════════ -->
+<div class="callout">
+  <h3>Need help finding services?</h3>
+  <p>Dial 211 for free, confidential, 24/7 referrals to local resources including food, housing, healthcare, employment, and more.</p>
+  <span class="callout-number">2-1-1</span>
+  <div style="margin-top:16px;font-size:.9rem;opacity:.75">
+    Baker County: (904) 632-0600 &nbsp;·&nbsp; Bradford &amp; Union: (866) 288-4312
+  </div>
+</div>
+
+</main>
+
+<!-- Footer -->
+<footer>
+  <strong>Community Resource Guide</strong><br>
+  Baker, Bradford &amp; Union Counties, Florida
+  <div class="footer-divider"></div>
+  Compiled for the <a href="https://www.newriverlibrary.org" target="_blank">New River Public Library Cooperative</a><br>
+  <span style="font-size:.8rem;opacity:.6">Last updated: April 2026 · Please call ahead to verify hours and availability.</span>
+</footer>
+
+<script>
+(function(){
+  const navBtns=document.querySelectorAll('.nav-btn');
+  const sections=document.querySelectorAll('.section');
+  navBtns.forEach(btn=>{btn.addEventListener('click',()=>{
+    navBtns.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+    const t=btn.dataset.target;sections.forEach(s=>{s.classList.toggle('active',s.id===t)});
+    window.scrollTo({top:document.querySelector('.filter-bar').offsetTop-60,behavior:'smooth'});
+  })});
+  const pills=document.querySelectorAll('.pill');
+  pills.forEach(pill=>{pill.addEventListener('click',()=>{
+    pills.forEach(p=>p.classList.remove('active'));pill.classList.add('active');
+    const c=pill.dataset.county;
+    document.querySelectorAll('.card').forEach(card=>{card.style.display=c==='all'?'':card.dataset.county===c?'':'none'});
+  })});
+})();
+</script>
+</body>
+</html>

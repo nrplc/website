@@ -1,0 +1,47 @@
+# Publishes a proposed change to the staging site so it can be reviewed
+# before it goes live. Runs whenever a pull request is opened or updated.
+name: Deploy to staging
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['site/**']
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write   # to post the preview link on the pull request
+
+concurrency:
+  group: staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ vars.STAGING_URL }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-2
+
+      - name: Upload site to staging bucket
+        run: aws s3 sync site/ "s3://${{ vars.STAGING_BUCKET }}" --delete
+
+      - name: Refresh CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "${{ vars.STAGING_DISTRIBUTION_ID }}" --paths "/*"
+
+      - name: Post preview link
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --body \
+            "Preview this change here: ${{ vars.STAGING_URL }}
+          If it looks right, click **Files changed → Review changes → Approve**. Merging publishes it to https://nrplc.org."

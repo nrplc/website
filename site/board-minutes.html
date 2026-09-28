@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Minutes | New River Public Library Cooperative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e2d5a;--navy-dark:#081e3f;--orange:#e87722;--orange-dark:#c9621a;--text:#1a1a1a;--muted:#5a6474;--border:#dce2ea;--bg:#f6f7f9;--white:#ffffff}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{font-family:"Inter",sans-serif;color:var(--text);background:var(--bg);font-size:16px;line-height:1.6}
+
+a{color:var(--navy);text-decoration:none}
+a:hover{color:var(--orange)}
+
+.skip-link{
+    position:absolute;
+    top:-40px;
+    left:0;
+    background:var(--navy);
+    color:#fff;
+    padding:8px 16px;
+    font-size:14px;
+    z-index:999;
+    transition:top .2s
+}
+.skip-link:focus{
+    top:0
+}
+
+header{
+    background:#ffffff;
+    border-bottom:1px solid #e5e5e5;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 12px rgba(0,0,0,.08)
+}
+
+.nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+    display:flex;
+    align-items:center;
+    height:68px
+}
+
+.nav-logo img{
+    height:42px;
+    display:block
+}
+
+nav{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:4px
+}
+
+nav a,
+.nav-dropdown-btn{
+    color:#6e6e73;
+    font-size:14px;
+    font-weight:500;
+    padding:8px 14px;
+    border-radius:6px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    transition:background .15s,color .15s;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    white-space:nowrap;
+    font-family:inherit
+}
+
+nav a:hover,
+.nav-dropdown-btn:hover{
+    background:#f5f5f7;
+    color:#1d1d1f
+}
+
+nav a.active{
+    color:#1d1d1f
+}
+
+.nav-dropdown{
+    position:relative
+}
+
+.nav-dropdown-menu{
+    display:none;
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    background:var(--white);
+    border-radius:10px;
+    box-shadow:0 8px 28px rgba(0,0,0,.16);
+    min-width:220px;
+    padding:8px 0;
+    z-index:200
+}
+
+.nav-dropdown-menu.active{
+    display:block
+}
+
+.nav-dropdown-menu a{
+    display:block;
+    padding:9px 18px;
+    font-size:14px;
+    color:var(--text);
+    font-weight:400
+}
+
+.nav-dropdown-menu a:hover{
+    background:#f0f4fa;
+    color:var(--navy)
+}
+
+nav .nav-dropdown:last-child .nav-dropdown-menu {
+  left: auto;
+  right: 0;
+}
+
+.page-hero{background:linear-gradient(135deg,var(--navy) 0%,#163a72 100%);color:#fff;padding:52px 24px 48px}
+.page-hero-inner{max-width:780px;margin:0 auto}
+.page-hero .breadcrumb{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:12px}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.7)}.page-hero .breadcrumb a:hover{color:#fff}
+.page-hero h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(26px,4vw,40px);font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
+.page-hero p{font-size:17px;color:rgba(255,255,255,.8);max-width:580px;line-height:1.5}
+.hero-rule{width:44px;height:3px;background:var(--orange);margin:18px 0 0}
+.page-wrap{max-width:1180px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 260px;gap:48px}
+.page-wrap.full-width{grid-template-columns:1fr}
+@media(max-width:860px){.page-wrap{grid-template-columns:1fr}}
+.content h2{font-family:"Source Serif 4",Georgia,serif;font-size:21px;font-weight:600;color:var(--navy);margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:16px;font-weight:600;color:var(--navy);margin:22px 0 8px;font-style:italic;font-family:"Source Serif 4",Georgia,serif}
+.content p{margin-bottom:14px;color:#2a2a2a;line-height:1.78}
+.content ul,.content ol{padding-left:22px;margin-bottom:14px}
+.content li{margin-bottom:5px;line-height:1.68}
+.content strong{font-weight:600}
+.content a{color:var(--navy);border-bottom:1px solid rgba(14,45,90,.25)}
+.content a:hover{color:var(--orange);border-color:var(--orange)}
+.policy-section{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+@media(max-width:600px){.policy-section{padding:22px 20px}}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.sidebar-card h4{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sidebar-card ul{list-style:none;padding:0}
+.sidebar-card li{border-bottom:1px solid var(--border);padding:8px 0;font-size:14px}
+.sidebar-card li:last-child{border-bottom:none;padding-bottom:0}
+.sidebar-card a{color:var(--navy);font-weight:500}
+.sidebar-card a:hover{color:var(--orange)}
+.sidebar-card p{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:8px}
+.sidebar-card .phone{font-weight:600;color:var(--navy);font-size:15px}
+.notice{background:#fff8f0;border-left:4px solid var(--orange);padding:16px 20px;border-radius:0 8px 8px 0;margin:20px 0;font-size:15px}
+.notice p{margin:0;color:#7a3c00}
+footer{background:var(--navy-dark);color:rgba(255,255,255,.75);padding:48px 24px 28px}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px;margin-bottom:36px}
+.footer-col h5{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}
+.footer-col p,.footer-col address{font-size:14px;line-height:1.7;font-style:normal}
+.footer-col a{color:rgba(255,255,255,.75);font-size:14px;display:block;margin-bottom:5px}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:13px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:rgba(255,255,255,.5)}.footer-bottom a:hover{color:var(--orange)}
+.footer-col strong a {
+  display: inline;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-col strong a:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="https://dgtd3hzmr3a4y.cloudfront.net/images/logo-newriver.png" alt="New River Public Library Cooperative"></a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="https://live-newriverplc.pantheonsite.io/events/month" target="_blank" rel="noopener">Events</a>
+
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-btn">Libraries &#9662;</button>
+    <div class="nav-dropdown-menu">
+      <a href="/Bradford">Bradford County Public Library</a>
+      <a href="/Baker">Emily Taber Public Library</a>
+      <a href="/Union">Mary C. Brown Public Library</a>
+    </div>
+  </div>
+
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Digital Resources &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="https://neflin.overdrive.com/" target="_blank" rel="noopener">Libby</a>
+          <a href="#">Newspaper Archive</a>
+          <a href="nrplc-digital-resources.html" target="_blank" rel="noopener">Gale Databases</a>
+          <a href="https://link.gale.com/apps/TERC?u=33835_nrplc" target="_blank" rel="noopener">Test Prep Resources</a>
+        </div>
+      </div>
+
+<a href="services.html">Services</a>
+
+<div class="nav-dropdown">
+  <button class="nav-dropdown-btn">Support &#9662;</button>
+
+  <div class="nav-dropdown-menu">
+    
+    <!--
+    <a href="#">Friends of Union County Library</a>
+    <a href="#">Friends of Bradford County Library</a>
+    <a href="#">Friends of Baker County Library</a>
+    -->
+
+    <a href="https://www.jotform.com/261584323486059">Volunteer</a>
+
+  </div>
+</div>
+
+</header>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="/">Home</a> &rsaquo; Board Minutes</p>
+    <h1>Board Minutes</h1>
+    <p>Official minutes from meetings of the NRPLC Governing Board.</p>
+    <div class="hero-rule"></div>
+  </div>
+</div>
+<div class="page-wrap" id="main-content">
+  <main class="content">
+
+<div class="notice"><p>This page is being prepared. Please check back soon or <a href="contact.html">contact us</a> for more information.</p></div>
+<div class="policy-section">
+<h2>Board Minutes</h2>
+<p>Official minutes from meetings of the NRPLC Governing Board.</p>
+<p>Content for this page will be published shortly. If you need this information immediately, please contact the Cooperative office at <a href="tel:3864064262">(386) 406-4262</a> or visit your nearest branch library.</p>
+</div>
+
+  </main>
+  <aside>
+<div class="sidebar-card">
+  <h4>About NRPLC</h4>
+  <ul>
+    <li><a href="about.html">About the Cooperative</a></li>
+    <li><a href="mission.html">Mission Statement</a></li>
+    <li><a href="commissioners.html">Board of Commissioners</a></li>
+    <li><a href="policies.html">Library Policies</a></li>
+    <li><a href="plan-of-service.html">Plan of Service</a></li>
+    <li><a href="board-agendas.html">Board Agendas</a></li>
+    <li><a href="board-minutes.html">Board Minutes</a></li>
+    <li><a href="fy2026-budget.html">FY2026 Budget</a></li>
+    <li><a href="strategic-plan.html">Strategic Plan</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+</div>
+
+<div class="sidebar-card">
+  <h4>Our Libraries</h4>
+  <ul>
+    <li>
+      <strong><a href="/Bradford">Bradford County</a></strong><br>
+      <a href="tel:9043683911">(904) 368-3911</a>
+    </li>
+    <li>
+      <strong><a href="/Baker">Emily Taber (Baker)</a></strong><br>
+      <a href="tel:9042596464">(904) 259-6464</a>
+    </li>
+    <li>
+      <strong><a href="/Union">Mary C. Brown (Union)</a></strong><br>
+      <a href="tel:3864963432">(386) 496-3432</a>
+    </li>
+  </ul>
+</div>
+
+</aside>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>New River Public Library Cooperative</h5>
+        <address>10 S. Lake Ave<br>Lake Butler, FL 32054<br>
+          <a href="tel:3864064262">(386) 406-4262</a><br>
+          <a href="https://nrplc.org">NRPLC.org</a>
+        </address>
+      </div>
+
+<div class="footer-col">
+  <h5>Our Libraries</h5>
+
+  <p>
+    <strong>
+      <a href="/Bradford">
+        Bradford County Public Library
+      </a>
+    </strong><br>
+    456 West Pratt St, Starke, FL 32091<br>
+    <a href="tel:9043683911">(904) 368-3911</a>
+  </p>
+
+  <p>
+    <strong>
+      <a href="/Baker">
+        Emily Taber Library
+      </a>
+    </strong><br>
+    14 McIver Ave. West, Macclenny, FL 32063<br>
+    <a href="tel:9042596464">(904) 259-6464</a>
+  </p>
+
+  <p>
+    <strong>
+      <a href="/Union">
+        Mary C. Brown Library
+      </a>
+    </strong><br>
+    250 SE 5th Ave, Lake Butler, FL 32054<br>
+    <a href="tel:3864963432">(386) 496-3432</a>
+  </p>
+</div>
+
+      <div class="footer-col">
+        <h5>About</h5>
+        <a href="about.html">About the Cooperative</a>
+        <a href="mission.html">Mission Statement</a>
+        <a href="commissioners.html">Board of Commissioners</a>
+        <a href="policies.html">Library Policies</a>
+        <a href="plan-of-service.html">Plan of Service</a>
+        <a href="accessibility.html">Accessibility Statement</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="board-agendas.html">Board Agendas</a>
+        <a href="board-minutes.html">Board Minutes</a>
+        <a href="fy2026-budget.html">FY2026 Budget</a>
+        <a href="strategic-plan.html">Strategic Plan</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect on Facebook</h5>
+      <a href="https://www.facebook.com/emilytaberpubliclibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Baker County Library
+      </a>
+      <a href="https://www.facebook.com/bradfordlibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Bradford County Library
+      </a>
+      <a href="https://www.facebook.com/marycbrownpubliclibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Union County Library
+      </a>
+      </div>
+    </div>
+
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 New River Public Library Cooperative. All rights reserved.</span>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+ <script>
+document.querySelectorAll('.nav-dropdown-btn').forEach(button => {
+  button.addEventListener('click', e => {
+    e.preventDefault();
+
+    document.querySelectorAll('.nav-dropdown-menu.active').forEach(menu => {
+      if (menu !== button.nextElementSibling) {
+        menu.classList.remove('active');
+      }
+    });
+
+    button.nextElementSibling.classList.toggle('active');
+  });
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+      menu.classList.remove('active');
+    });
+  }
+});
+</script>
+</body>
+</html>

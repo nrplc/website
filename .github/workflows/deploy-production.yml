@@ -1,0 +1,36 @@
+# Publishes the site to nrplc.org whenever a change is merged into main.
+name: Deploy to production
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**']
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # lets GitHub sign in to AWS without stored keys
+  contents: read
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://nrplc.org
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-2
+
+      - name: Upload site to S3
+        run: aws s3 sync site/ "s3://${{ vars.PROD_BUCKET }}" --delete
+
+      - name: Refresh CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "${{ vars.PROD_DISTRIBUTION_ID }}" --paths "/*"

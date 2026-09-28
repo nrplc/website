@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Resources | New River Public Library Cooperative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1B3A6B;
+    --navy-dark: #0f2347;
+    --orange: #E87722;
+    --white: #ffffff;
+    --off-white: #f8f7f4;
+    --text: #1a1a2e;
+    --muted: #5a6275;
+    --border: #e2e0d8;
+    --footer-bg: #1a1a2e;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: var(--navy); text-decoration: none; }
+  a:hover { color: var(--orange); }
+
+  /* ── SKIP LINK ── */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--navy);
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 999;
+    font-size: 14px;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* ── NAV ── */
+  header {
+    background: #ffffff !important;
+    border-bottom: 3px solid #e5e5e5;
+    box-shadow: 0 2px 10px rgba(0,0,0,.18);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo img { height: 36px; display: block; }
+
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color .15s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--navy); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+  }
+
+  .page-header-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .page-header h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: -.03em;
+    line-height: 1;
+    margin-bottom: .5rem;
+  }
+
+  .page-header h1 span { color: var(--orange); }
+
+  .page-header p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 580px;
+    line-height: 1.5;
+  }
+
+  /* ── SEARCH BAND ── */
+  .search-band {
+    background: var(--navy);
+    padding: 1.5rem 2rem;
+  }
+
+  .search-band-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 580px;
+  }
+
+  .search-form input {
+    flex: 1;
+    height: 48px;
+    background: white;
+    border: 1.5px solid rgba(255,255,255,.22);
+    border-radius: 8px;
+    padding: 0 18px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .18s, background .18s;
+  }
+
+  .search-form input::placeholder { color: var(--navy); }
+  .search-form input:focus {
+    border-color: var(--orange);
+    background: white;
+    color: var(--navy);
+  }
+
+  .search-form button {
+    height: 48px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0 24px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background .15s;
+    white-space: nowrap;
+  }
+
+  .search-form button:hover { background: #d06a18; }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+    width: 100%;
+  }
+
+  /* ── FILTER ROW ── */
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-row input {
+    flex: 1;
+    min-width: 200px;
+    height: 42px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: #fff;
+    outline: none;
+    transition: border-color .15s;
+  }
+
+  .filter-row input:focus {
+    border-color: var(--orange);
+  }
+
+  .count-pill {
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* ── SECTION ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── GRID ── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── CARD ── */
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 20px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    min-height: 100px;
+    position: relative;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(232,119,34,.45);
+    box-shadow: 0 8px 28px rgba(27,58,107,.1);
+  }
+
+  .resource-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 14px;
+    color: var(--orange);
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity .18s, transform .18s;
+  }
+
+  .resource-card:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .resource-card img { display: none; }
+
+  .resource-card h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 6px;
+    letter-spacing: -.01em;
+  }
+
+  .resource-card p {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .resource-card.hidden { display: none; }
+
+  /* ── PETERSON CARD ── */
+  .peterson-section { margin-bottom: 2.5rem; }
+
+  .peterson-card {
+    background: var(--white);
+    border: 1.5px solid var(--orange);
+    border-radius: 12px;
+    padding: 28px 32px;
+    max-width: 600px;
+  }
+
+  .peterson-card h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .peterson-card .peterson-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .peterson-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .peterson-form input {
+    flex: 1;
+    min-width: 180px;
+    height: 42px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s;
+  }
+
+  .peterson-form input:focus { border-color: var(--orange); }
+
+  .peterson-form button {
+    height: 42px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0 20px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background .15s;
+    white-space: nowrap;
+  }
+
+  .peterson-form button:hover { background: #d06a18; }
+
+  .peterson-help {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+
+  .peterson-msg {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-top: 8px;
+    min-height: 18px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--footer-bg);
+    color: rgba(255,255,255,.6);
+    padding: 3rem 2rem 2rem;
+    border-top: 3px solid var(--orange);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  footer h4 {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    margin-bottom: .75rem;
+  }
+
+  footer a {
+    color: rgba(255,255,255,.6);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+  }
+
+  footer a:hover { color: var(--orange); }
+
+  .footer-brand { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: .5rem; }
+  .footer-brand span { color: var(--orange); }
+
+  .footer-bottom {
+    max-width: 1140px;
+    margin: 2rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,.1);
+    font-size: 12.5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .footer-bottom a { color: rgba(255,255,255,.45); display: inline; }
+  .footer-bottom a:hover { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 520px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .search-form { flex-direction: column; }
+    .search-form button { width: 100%; }
+  }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.site-header {
+  background: var(--navy);
+  border-bottom: 3px solid var(--orange);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo__img {
+  max-height: 58px;
+  width: auto;
+  display: block;
+}
+
+.main-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.main-nav__link,
+.dropdown-toggle {
+  background: none;
+  border: 0;
+  color: var(--navy);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: .75rem .25rem;
+}
+
+.main-nav__link:hover,
+.main-nav__link--active,
+.dropdown-toggle:hover {
+  color: var(--navy);
+}
+
+.has-dropdown {
+  position: relative;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+  list-style: none;
+  padding: .5rem;
+  z-index: 999;
+}
+
+.dropdown-open > .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: .6rem .75rem;
+  color: var(--navy);
+  border-radius: 8px;
+}
+
+.dropdown a:hover {
+  background: var(--off-white);
+  color: var(--orange);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.mobile-toggle__bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+}
+
+@media (max-width: 860px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 86px;
+    left: 0;
+    right: 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,.15);
+    padding: 1rem 2rem;
+  }
+
+  .main-nav.main-nav--open {
+    display: block;
+  }
+
+  .main-nav__list {
+    display: block;
+  }
+
+  .main-nav__link,
+  .dropdown-toggle {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: .85rem 0;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    border-radius: 8px;
+    margin: .25rem 0 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- HEADER / NAV -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="https://dgtd3hzmr3a4y.cloudfront.net/images/logo-newriver.png" alt="New River Public Library Cooperative" class="logo__img">
+    </a>
+
+    <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="mobile-toggle__bar"></span>
+      <span class="mobile-toggle__bar"></span>
+      <span class="mobile-toggle__bar"></span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <ul class="main-nav__list" role="menubar">
+        <li role="none"><a href="index.html" class="main-nav__link" role="menuitem">Home</a></li>
+        <li role="none"><a href="https://live-newriverplc.pantheonsite.io/events/month" class="main-nav__link" role="menuitem">Events</a></li>
+
+        <li class="has-dropdown" role="none">
+          <button class="main-nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Libraries <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown" role="menu" aria-label="Libraries submenu">
+            <li role="none"><a href="/Bradford" role="menuitem">Bradford County Public Library</a></li>
+            <li role="none"><a href="/Baker" role="menuitem">Emily Taber Public Library</a></li>
+            <li role="none"><a href="/Union" role="menuitem">Mary C. Brown Public Library</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown" role="none">
+          <button class="main-nav__link main-nav__link--active dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Digital Resources <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown" role="menu" aria-label="Digital Resources submenu">
+            <li role="none"><a href="https://neflin.overdrive.com/" role="menuitem">Libby</a></li>
+            <li role="none"><a href="nrplc-digital-resources.html" role="menuitem">Gale Databases</a></li>
+            <li role="none"><a href="https://link.gale.com/apps/TERC?u=33835_nrplc" role="menuitem">Test Prep Resources</a></li>
+          </ul>
+        </li>
+
+        <li role="none"><a href="services.html" class="main-nav__link" role="menuitem">Services</a></li>
+
+        <li class="has-dropdown" role="none">
+          <button class="main-nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Support <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown" role="menu" aria-label="Support submenu">
+            <li role="none"><a href="https://www.jotform.com/261584323486059" role="menuitem">Volunteer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>Digital <span>Resources</span></h1>
+    <p>Free access to databases, research tools, and career resources — available to every New River library cardholder.</p>
+  </div>
+</div>
+
+<!-- SEARCH BAND -->
+<div class="search-band">
+  <div class="search-band-inner">
+    <form class="search-form" id="internetSearch" role="search">
+      <input id="searchInput" type="search" placeholder="Search the internet…" autocomplete="off" aria-label="Search the internet">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="main-content">
+
+  <!-- Filter -->
+  <div class="filter-row">
+    <input id="filterBox" type="search" placeholder="Filter resources by name or topic…" aria-label="Filter resources">
+    <span class="count-pill" id="countPill">32 resources</span>
+  </div>
+
+  <!-- Gale Section -->
+  <p class="section-label">Gale / Florida Electronic Library</p>
+
+  <div class="resource-grid" id="resourceGrid">
+    <a class="resource-card" href="https://link.gale.com/apps/AONE" target="_blank" rel="noopener" data-title="gale academic onefile" data-tags="academic scholarly journals newspapers magazines">
+      <div><h3>Gale Academic OneFile</h3><p>Scholarly journals, newspapers, magazines</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/ITOF" target="_blank" rel="noopener" data-title="gale general onefile" data-tags="general magazines news research">
+      <div><h3>Gale General OneFile</h3><p>Magazines, news, and general research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/HWRC" target="_blank" rel="noopener" data-title="gale health wellness" data-tags="health consumer health information">
+      <div><h3>Gale Health &amp; Wellness</h3><p>Consumer health information</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/ITKE" target="_blank" rel="noopener" data-title="gale in context elementary" data-tags="kids elementary students research">
+      <div><h3>Gale In Context: Elementary</h3><p>Kid-friendly research for elementary students</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/MSIC" target="_blank" rel="noopener" data-title="gale in context middle school" data-tags="middle school students research">
+      <div><h3>Gale In Context: Middle School</h3><p>Age-appropriate middle school research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/OVIC" target="_blank" rel="noopener" data-title="gale in context opposing viewpoints" data-tags="viewpoints issues debate topics">
+      <div><h3>Gale In Context: Opposing Viewpoints</h3><p>Issues, viewpoints, and topic overviews</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/BIC" target="_blank" rel="noopener" data-title="gale in context biography" data-tags="biography biographies people research">
+      <div><h3>Gale In Context: Biography</h3><p>Biographies and people research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/GIC" target="_blank" rel="noopener" data-title="gale in context global issues" data-tags="global international issues perspectives">
+      <div><h3>Gale In Context: Global Issues</h3><p>International issues and global perspectives</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/SCIC" target="_blank" rel="noopener" data-title="gale in context science" data-tags="science topics experiments articles">
+      <div><h3>Gale In Context: Science</h3><p>Science topics, experiments, and articles</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/UHIC" target="_blank" rel="noopener" data-title="gale in context us history" data-tags="history united states primary sources">
+      <div><h3>Gale In Context: U.S. History</h3><p>U.S. history topics and primary sources</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/WHIC" target="_blank" rel="noopener" data-title="gale in context world history" data-tags="history world primary sources">
+      <div><h3>Gale In Context: World History</h3><p>World history topics and primary sources</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/LITF" target="_blank" rel="noopener" data-title="gale literature litfinder" data-tags="literature poems short stories essays speeches">
+      <div><h3>Gale Literature: LitFinder</h3><p>Poems, short stories, essays, and speeches</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/LRC" target="_blank" rel="noopener" data-title="gale literature resource center" data-tags="literature authors criticism analysis">
+      <div><h3>Gale Literature Resource Center</h3><p>Authors, criticism, and literary analysis</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/GLBA" target="_blank" rel="noopener" data-title="gale books and authors" data-tags="books reading recommendations discovery">
+      <div><h3>Gale Books and Authors</h3><p>Reading recommendations and book discovery</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/SBRC" target="_blank" rel="noopener" data-title="gale business entrepreneurship" data-tags="business startups market research plans">
+      <div><h3>Gale Business: Entrepreneurship</h3><p>Business plans, startups, and market research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/GBIB" target="_blank" rel="noopener" data-title="gale business insights" data-tags="business company industry research">
+      <div><h3>Gale Business: Insights</h3><p>Company and industry research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPBU" target="_blank" rel="noopener" data-title="gale onefile business" data-tags="business trade publications">
+      <div><h3>Gale OneFile: Business</h3><p>Business and trade publications</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPCS" target="_blank" rel="noopener" data-title="gale onefile computer science" data-tags="computers technology it articles">
+      <div><h3>Gale OneFile: Computer Science</h3><p>Computer and IT articles</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPCA" target="_blank" rel="noopener" data-title="gale onefile culinary arts" data-tags="food cooking culinary hospitality">
+      <div><h3>Gale OneFile: Culinary Arts</h3><p>Food, cooking, and hospitality research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PROF" target="_blank" rel="noopener" data-title="gale onefile educator reference" data-tags="education teaching articles resources">
+      <div><h3>Gale OneFile: Educator's Reference Complete</h3><p>Education articles and teaching resources</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPES" target="_blank" rel="noopener" data-title="gale onefile environmental studies" data-tags="environment sustainability science">
+      <div><h3>Gale OneFile: Environmental Studies</h3><p>Environment, sustainability, and science</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPFA" target="_blank" rel="noopener" data-title="gale onefile fine arts" data-tags="art music theater culture">
+      <div><h3>Gale OneFile: Fine Arts</h3><p>Art, music, theater, and culture</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPGT" target="_blank" rel="noopener" data-title="gale onefile gardening horticulture" data-tags="gardening plants landscaping">
+      <div><h3>Gale OneFile: Gardening and Horticulture</h3><p>Gardening, plants, and landscaping</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPHI" target="_blank" rel="noopener" data-title="gale onefile home improvement" data-tags="home diy repairs projects">
+      <div><h3>Gale OneFile: Home Improvement</h3><p>DIY, repairs, and home projects</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPTH" target="_blank" rel="noopener" data-title="gale onefile hospitality tourism" data-tags="travel restaurants hospitality tourism">
+      <div><h3>Gale OneFile: Hospitality and Tourism</h3><p>Travel, restaurants, and hospitality</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/IFME" target="_blank" rel="noopener" data-title="gale onefile informe academico" data-tags="español spanish language academic">
+      <div><h3>Gale OneFile: Informe Académico</h3><p>Spanish-language academic research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPIL" target="_blank" rel="noopener" data-title="gale onefile insurance liability" data-tags="insurance liability research">
+      <div><h3>Gale OneFile: Insurance and Liability</h3><p>Insurance and liability research</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/LT" target="_blank" rel="noopener" data-title="gale onefile legaltrac" data-tags="legal law reviews publications">
+      <div><h3>Gale OneFile: LegalTrac</h3><p>Law reviews and legal publications</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/STND" target="_blank" rel="noopener" data-title="gale onefile news" data-tags="news newspapers current events">
+      <div><h3>Gale OneFile: News</h3><p>Newspapers and current events</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPPM" target="_blank" rel="noopener" data-title="gale onefile popular magazines" data-tags="magazines popular general reading">
+      <div><h3>Gale OneFile: Popular Magazines</h3><p>Popular magazines and general reading</p></div>
+    </a>
+    <a class="resource-card" href="https://link.gale.com/apps/PPVC" target="_blank" rel="noopener" data-title="gale onefile vocations careers" data-tags="careers trades vocational articles jobs">
+      <div><h3>Gale OneFile: Vocations and Careers</h3><p>Careers, trades, and vocational articles</p></div>
+    </a>
+  </div>
+
+  <!-- Peterson's -->
+  <p class="section-label">Test &amp; Career Prep</p>
+
+  <div class="peterson-section">
+    <div class="peterson-card">
+      <h3>Gale Presents: Peterson's Test and Career Prep</h3>
+      <p class="peterson-desc">Practice tests, career tools, college planning, résumés, and career prep — free with your New River library card.</p>
+      <form class="peterson-form" id="petersonForm">
+        <input id="petersonBarcode" type="text" inputmode="numeric" autocomplete="off" placeholder="Enter your library card number">
+        <button type="submit">Open Peterson's</button>
+      </form>
+      <p class="peterson-help">Peterson's requires your library barcode. Enter or scan your card, then continue to the Peterson's login screen.</p>
+      <p class="peterson-msg" id="petersonMsg" aria-live="polite"></p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">New <span>River</span> Public Library Cooperative</div>
+      <p>Serving Baker, Bradford, and Union Counties</p>
+      <br>
+      <p>456 West Pratt Street<br>Starke, FL</p>
+      <br>
+      <p><a href="tel:3864064262">(386) 406-4262</a></p>
+      <p><a href="https://nrplc.org">NRPLC.org</a></p>
+    </div>
+    <div>
+      <h4>Our Libraries</h4>
+      <p style="margin-bottom:.75rem"><strong style="color:#fff;font-size:13px">Bradford County Public Library</strong><br>
+      456 West Pratt Street, Starke, FL 32091<br>
+      <a href="tel:9043683911">(904) 368-3911</a></p>
+      <p style="margin-bottom:.75rem"><strong style="color:#fff;font-size:13px">Emily Taber Library</strong><br>
+      14 McIver Ave. West, Macclenny, FL 32063<br>
+      <a href="tel:9042596464">(904) 259-6464</a></p>
+      <p><strong style="color:#fff;font-size:13px">Mary C. Brown Library</strong><br>
+      250 SE 5th Avenue, Lake Butler, FL 32054<br>
+      <a href="tel:3864963432">(386) 496-3432</a></p>
+    </div>
+    <div>
+      <h4>About</h4>
+      <a href="/about.html">About the Cooperative</a>
+      <a href="/mission.html">Mission Statement</a>
+      <a href="/commissioners.html">Board of Commissioners</a>
+      <a href="/policies.html">Library Policies</a>
+      <a href="/plan-of-service.html">Plan of Service</a>
+      <a href="/board-agendas.html">Board Agendas</a>
+      <a href="/board-minutes.html">Board Minutes</a>
+      <a href="/fy2026-budget.html">FY2026 Budget</a>
+      <a href="/strategic-plan.html">Strategic Plan</a>
+      <a href="/contact.html">Contact Us</a>
+    </div>
+    <div>
+      <h4>Connect on Facebook</h4>
+      <a href="https://www.facebook.com/BakerCountyLibrary/" target="_blank" rel="noopener">Baker County Library</a>
+      <a href="https://www.facebook.com/BradfordCountyPublicLibrary/" target="_blank" rel="noopener">Bradford County Library</a>
+      <a href="https://www.facebook.com/UnionCountyPublicLibrary/" target="_blank" rel="noopener">Union County Library</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 New River Public Library Cooperative. All rights reserved.</span>
+    <span><a href="/accessibility.html">Accessibility</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const searchForm = document.getElementById('internetSearch');
+  const searchInput = document.getElementById('searchInput');
+  if (searchForm && searchInput) {
+    searchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const q = searchInput.value.trim();
+      if (!q) return;
+      window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank', 'noopener');
+    });
+  }
+
+  const filterBox = document.getElementById('filterBox');
+  const countPill = document.getElementById('countPill');
+  const cards = Array.from(document.querySelectorAll('.resource-card'));
+
+  if (filterBox && countPill) {
+    filterBox.addEventListener('input', function () {
+      const term = filterBox.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(function (card) {
+        const hay = ((card.dataset.title || '') + ' ' + (card.dataset.tags || '')).toLowerCase();
+        const show = !term || hay.includes(term);
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      countPill.textContent = visible + (visible === 1 ? ' resource' : ' resources');
+    });
+  }
+
+  const petersonForm = document.getElementById('petersonForm');
+  const petersonBarcode = document.getElementById('petersonBarcode');
+  const petersonMsg = document.getElementById('petersonMsg');
+  const petersonUrl = 'https://link.gale.com/apps/TERC?u=33835_nrplc';
+
+  if (petersonForm && petersonBarcode && petersonMsg) {
+    petersonForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const barcode = petersonBarcode.value.replace(/\s+/g, '');
+      const valid = /^(26666|20304|26665)[0-9]{9}$/.test(barcode);
+      if (!valid) {
+        petersonMsg.textContent = 'Please enter a valid New River library card number.';
+        petersonBarcode.focus();
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(barcode);
+        petersonMsg.textContent = "Card number copied — paste it when Peterson's asks.";
+      } catch {
+        petersonMsg.textContent = "Continue to Peterson's and enter your card number when prompted.";
+      }
+      window.open(petersonUrl, '_blank', 'noopener');
+    });
+  }
+})();
+
+const toggle = document.querySelector('.mobile-toggle');
+const nav = document.getElementById('main-nav');
+
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !isOpen);
+    nav.classList.toggle('main-nav--open');
+  });
+}
+
+document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+
+    const parent = btn.closest('.has-dropdown');
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+    document.querySelectorAll('.dropdown-toggle').forEach(other => {
+      if (other !== btn) {
+        other.setAttribute('aria-expanded', 'false');
+        other.closest('.has-dropdown').classList.remove('dropdown-open');
+      }
+    });
+
+    btn.setAttribute('aria-expanded', !expanded);
+    parent.classList.toggle('dropdown-open');
+  });
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.has-dropdown')) {
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.closest('.has-dropdown').classList.remove('dropdown-open');
+    });
+  }
+});
+</script>
+
+</body>
+</html>

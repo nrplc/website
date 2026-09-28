@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emily Taber Public Library | New River Public Library Cooperative</title>
+  <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-75YSDB0774"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-75YSDB0774'); </script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+<div class="site-container">
+
+  <!-- Skip to main content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/Baker" class="logo">
+        <img src="images/logo-emilytaber.png" alt="Emily Taber Public Library" class="logo__img" />
+      </a>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="mobile-toggle__bar"></span>
+        <span class="mobile-toggle__bar"></span>
+        <span class="mobile-toggle__bar"></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+        <ul class="main-nav__list" role="menubar">
+          <li role="none"><a href="/Baker" class="main-nav__link main-nav__link--active" role="menuitem">Home</a></li>
+          <li role="none"><a href="https://live-newriverplc.pantheonsite.io/events/month" class="main-nav__link" role="menuitem">Events</a></li>
+	  <li class="has-dropdown" role="none">
+  		<button class="main-nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem"> Libraries <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+  		</button>
+  	<ul class="dropdown" role="menu" aria-label="Libraries submenu">
+    	  <li role="none"><a href="/Bradford" role="menuitem">Bradford County Public Library</a></li>
+    	  <li role="none"><a href="/Baker" role="menuitem">Emily Taber Public Library</a></li>
+    	  <li role="none"><a href="/Union" role="menuitem">Mary C. Brown Public Library</a></li>
+  	</ul>
+	</li>
+          <li class="has-dropdown" role="none">
+            <button class="main-nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+              Digital Resources <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown" role="menu" aria-label="Digital Resources submenu">
+              <li role="none"><a href="https://neflin.overdrive.com/" role="menuitem">Libby</a></li>
+              <li role="none"><a href="https://go.gale.com/ps/start.do?p=SPJ.SP23&u=33835_nrplc" role="menuitem">Newspaper Archive</a></li>
+              <li role="none"><a href="nrplc-digital-resources.html" role="menuitem">Gale Database</a></li>
+              <li role="none"><a href="https://link.gale.com/apps/TERC?u=33835_nrplc" role="menuitem">Test Prep Resources</a></li>
+            </ul>
+          </li>
+
+<li role="none">
+  <a href="services.html" class="main-nav__link" role="menuitem">Services</a>
+</li>
+
+<li class="has-dropdown" role="none">
+  <button class="main-nav__link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+    Support <i class="fas fa-chevron-down nav-arrow" aria-hidden="true"></i>
+  </button>
+
+  <ul class="dropdown" role="menu" aria-label="Support submenu">
+    
+    <!--
+    <li role="none"><a href="#" role="menuitem">Friends of the Union County Library</a></li>
+    <li role="none"><a href="#" role="menuitem">Friends of the Bradford County Library</a></li>
+    <li role="none"><a href="#" role="menuitem">Friends of the Baker County Library</a></li>
+    -->
+
+    <li role="none"><a href="#" role="menuitem">Volunteer</a></li>
+
+  </ul>
+</li>
+
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" style="--hero-image: url('images/hero-emilytaber.png')">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <h1 class="hero__title">Emily Taber Public Library</h1>
+      <p class="hero__tagline">Imagine. Discover. Connect.</p>
+
+      <form class="search-bar" action="https://nrplc.bywatersolutions.com/cgi-bin/koha/opac-search.pl" method="GET">
+        <span class="search-bar__icon" aria-hidden="true">
+          <i class="fas fa-search"></i>
+        </span>
+        <input
+          type="search"
+          class="search-bar__input"
+          name="q"
+          placeholder="Search books, movies, and more..."
+          aria-label="Search books, movies, and more"
+        />
+        <button type="submit" class="search-bar__submit" aria-label="Submit search">
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+      </form>
+
+      <div class="hero__actions">
+        <a href="https://nrplc.bywatersolutions.com/cgi-bin/koha/opac-user.pl" class="hero__action-link">
+          <i class="far fa-user" aria-hidden="true"></i>
+          My Account
+        </a>
+        <span class="hero__divider">|</span>
+        <a href="https://nrplc.bywatersolutions.com/cgi-bin/koha/opac-password-recovery.pl" class="hero__action-link">
+          <i class="fas fa-key" aria-hidden="true"></i>
+          Change My PIN
+        </a>
+        <span class="hero__divider">|</span>
+        <a href="https://nrplc.bywatersolutions.com/cgi-bin/koha/opac-user.pl" class="hero__action-link">
+          <i class="far fa-id-card" aria-hidden="true"></i>
+          Get a Library Card
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESOURCE CARDS ===== -->
+  <section class="cards-section" id="main-content" aria-label="Library Resources">
+    <div class="container">
+      <div class="cards-grid">
+
+        <!-- Libby -->
+        <div class="card card--libby">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Libby</h3>
+          <p class="card-desc">Borrow eBooks and audiobooks. Bestsellers, new releases, and classics on any device.</p>
+          <a href="https://neflin.overdrive.com/" class="card-link">
+            Browse Collection
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        </div>
+
+        <!-- Gale Databases -->
+        <div class="card card--gale">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Gale Databases</h3>
+          <p class="card-desc">Periodicals, newspapers, and reference sources for students and researchers.</p>
+          <a href="nrplc-digital-resources.html" class="card-link">
+            Explore
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        </div>
+
+        <!-- Events -->
+        <div class="card card--events">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Events</h3>
+          <p class="card-desc">Story times, book clubs, workshops, and programs at your local branch.</p>
+          <a href="https://live-newriverplc.pantheonsite.io/events/month" class="card-link">
+            View Calendar
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        </div>
+
+        <!-- Community Links -->
+        <div class="card card--community">
+          <div class="card-icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m9.86-2.632a4.5 4.5 0 0 0-1.242-7.244l-4.5-4.5a4.5 4.5 0 0 0-6.364 6.364L5.25 8.25"/>
+            </svg>
+          </div>
+          <h3 class="card-title">Community Links</h3>
+          <p class="card-desc">Local organizations, partners, and resources across Baker, Bradford, and Union Counties.</p>
+          <a href="../information-and-referral-guide.html" class="card-link">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer__top">
+
+      <div class="footer__col footer__col--info">
+        <h4 class="footer__heading">Emily Taber Public Library</h4>
+        <p class="footer__tagline">A New River Public Library Cooperative Branch</p>
+        <address class="footer__address">
+          14 McIver Ave. West<br />
+          Macclenny, FL 32063
+        </address>
+        <div class="footer__contact">
+          <a href="tel:9042596464" class="footer__link">
+            <i class="fas fa-phone" aria-hidden="true"></i> (904) 259-6464
+          </a>
+          <br />
+          <a href="https://nrplc.org" class="footer__link" target="_blank" rel="noopener">
+            <i class="fas fa-globe" aria-hidden="true"></i> NRPLC.org
+          </a>
+        </div>
+<div class="footer__hours">
+  <h5 class="footer__hours-heading">Hours</h5>
+
+  <div class="footer__hours-row">
+    <span>Monday</span>
+    <span>12 PM - 5 PM</span>
+  </div>
+
+  <div class="footer__hours-row">
+    <span>Tuesday</span>
+    <span>10:30 AM - 7 PM</span>
+  </div>
+
+  <div class="footer__hours-row">
+    <span>Wednesday</span>
+    <span>12 PM - 5 PM</span>
+  </div>
+
+  <div class="footer__hours-row">
+    <span>Thursday</span>
+    <span>10:30 AM - 7 PM</span>
+  </div>
+
+  <div class="footer__hours-row">
+    <span>Friday</span>
+    <span>12 PM - 5 PM</span>
+  </div>
+
+  <div class="footer__hours-row">
+    <span>Saturday</span>
+    <span>9 AM - 1 PM</span>
+  </div>
+</div>
+      </div>
+
+      <div class="footer__col footer__col--locations">
+        <h4 class="footer__heading">Our Libraries</h4>
+        <ul class="footer__location-list">
+          <li>
+            <strong><a href="/Bradford">Bradford County Public Library</a></strong><br />
+            456 West Pratt Street, Starke, FL 32091<br />
+            <a href="tel:9043683911">(904) 368-3911</a>
+          </li>
+          <li>
+            <strong><a href="/Baker">Emily Taber Public Library</a></strong><br />
+            14 McIver Ave. West, Macclenny, FL 32063<br />
+            <a href="tel:9042596464">(904) 259-6464</a>
+          </li>
+          <li>
+            <strong><a href="/Union">Mary C. Brown Public Library</a></strong><br />
+            250 SE 5th Avenue, Lake Butler, FL 32054<br />
+            <a href="tel:3864963432">(386) 496-3432</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__col footer__col--links">
+        <h4 class="footer__heading">Quick Links</h4>
+        <ul class="footer__quick-links">
+          <li><a href="index.html">New River Cooperative</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+        </ul>
+      </div>
+
+<div class="footer__col footer__col--social">
+  <h4 class="footer__heading">Connect on Facebook</h4>
+  <ul class="footer__facebook-list">
+    <li>
+      <a href="https://www.facebook.com/emilytaberpubliclibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Baker County Library
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/bradfordlibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Bradford County Library
+      </a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/marycbrownpubliclibrary" target="_blank" rel="noopener">
+        <i class="fab fa-facebook" aria-hidden="true"></i> Union County Library
+      </a>
+    </li>
+  </ul>
+</div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copyright">&copy; 2026 New River Public Library Cooperative. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.mobile-toggle');
+    const nav = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isOpen);
+      nav.classList.toggle('main-nav--open');
+    });
+
+    // Accessible dropdown menus
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = btn.closest('.has-dropdown');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.dropdown-toggle').forEach(other => {
+          if (other !== btn) {
+            other.setAttribute('aria-expanded', 'false');
+            other.closest('.has-dropdown').classList.remove('dropdown-open');
+          }
+        });
+        btn.setAttribute('aria-expanded', !expanded);
+        parent.classList.toggle('dropdown-open');
+      });
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.closest('.has-dropdown').classList.remove('dropdown-open');
+          btn.focus();
+        }
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.has-dropdown')) {
+        document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.closest('.has-dropdown').classList.remove('dropdown-open');
+        });
+      }
+    });
+    document.querySelectorAll('.dropdown a').forEach(link => {
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const btn = link.closest('.has-dropdown').querySelector('.dropdown-toggle');
+          btn.setAttribute('aria-expanded', 'false');
+          link.closest('.has-dropdown').classList.remove('dropdown-open');
+          btn.focus();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

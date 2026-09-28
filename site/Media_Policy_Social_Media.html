@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Policy Including Social Media | New River Public Library Cooperative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e2d5a;--navy-dark:#081e3f;--orange:#e87722;--orange-dark:#c9621a;--text:#1a1a1a;--muted:#5a6474;--border:#dce2ea;--bg:#f6f7f9;--white:#ffffff}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",sans-serif;color:var(--text);background:var(--bg);font-size:16px;line-height:1.6}
+a{color:var(--navy);text-decoration:none}
+a:hover{color:var(--orange)}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--navy);color:#fff;padding:8px 16px;font-size:14px;z-index:999;transition:top .2s}
+.skip-link:focus{top:0}
+header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:68px}
+.nav-logo img{height:42px;display:block}
+nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+nav a,.nav-dropdown-btn{color:#6e6e73;font-size:14px;font-weight:500;padding:8px 14px;border-radius:6px;background:none;border:none;cursor:pointer;transition:background .15s,color .15s;display:flex;align-items:center;gap:4px;white-space:nowrap;font-family:inherit}
+nav a:hover,.nav-dropdown-btn:hover{background:#f5f5f7;color:#1d1d1f}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--white);border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.16);min-width:220px;padding:8px 0;z-index:200}
+.nav-dropdown-menu.active{display:block}
+.nav-dropdown-menu a{display:block;padding:9px 18px;font-size:14px;color:var(--text);font-weight:400}
+.nav-dropdown-menu a:hover{background:#f0f4fa;color:var(--navy)}
+nav .nav-dropdown:last-child .nav-dropdown-menu{left:auto;right:0}
+.page-hero{background:linear-gradient(135deg,var(--navy) 0%,#163a72 100%);color:#fff;padding:52px 24px 48px}
+.page-hero-inner{max-width:780px;margin:0 auto}
+.page-hero .breadcrumb{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:12px}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.7)}
+.page-hero .breadcrumb a:hover{color:#fff}
+.page-hero h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(26px,4vw,40px);font-weight:600;line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
+.page-hero p{font-size:17px;color:rgba(255,255,255,.8);max-width:580px;line-height:1.5}
+.hero-rule{width:44px;height:3px;background:var(--orange);margin:18px 0 0}
+.page-wrap{max-width:1180px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:1fr 260px;gap:48px}
+@media(max-width:860px){.page-wrap{grid-template-columns:1fr}}
+.content h2{font-family:"Source Serif 4",Georgia,serif;font-size:21px;font-weight:600;color:var(--navy);margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:16px;font-weight:600;color:var(--navy);margin:22px 0 8px;font-style:italic;font-family:"Source Serif 4",Georgia,serif}
+.content p{margin-bottom:14px;color:#2a2a2a;line-height:1.78}
+.content ul{padding-left:22px;margin-bottom:14px}
+.content li{margin-bottom:8px;line-height:1.68}
+.policy-section{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:32px 36px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+@media(max-width:600px){.policy-section{padding:22px 20px}}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.sidebar-card h4{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sidebar-card ul{list-style:none;padding:0}
+.sidebar-card li{border-bottom:1px solid var(--border);padding:8px 0;font-size:14px}
+.sidebar-card li:last-child{border-bottom:none;padding-bottom:0}
+.sidebar-card a{color:var(--navy);font-weight:500}
+.sidebar-card a:hover{color:var(--orange)}
+footer{background:var(--navy-dark);color:rgba(255,255,255,.75);padding:48px 24px 28px}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px;margin-bottom:36px}
+.footer-col h5{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}
+.footer-col p,.footer-col address{font-size:14px;line-height:1.7;font-style:normal}
+.footer-col a{color:rgba(255,255,255,.75);font-size:14px;display:block;margin-bottom:5px}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:13px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.footer-bottom a{color:rgba(255,255,255,.5)}
+.footer-bottom a:hover{color:var(--orange)}
+.footer-col strong a{display:inline;color:#fff;text-decoration:none;font-weight:700}
+.footer-col strong a:hover{color:var(--orange);text-decoration:underline}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/"><img src="https://dgtd3hzmr3a4y.cloudfront.net/images/logo-newriver.png" alt="New River Public Library Cooperative"></a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="https://live-newriverplc.pantheonsite.io/events/month" target="_blank" rel="noopener">Events</a>
+
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Libraries &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="/Bradford">Bradford County Public Library</a>
+          <a href="/Baker">Emily Taber Public Library</a>
+          <a href="/Union">Mary C. Brown Public Library</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Digital Resources &#9662;</button>
+        <div class="nav-dropdown-menu">
+          <a href="https://neflin.overdrive.com/" target="_blank" rel="noopener">Libby</a>
+          <a href="#">Newspaper Archive</a>
+          <a href="nrplc-digital-resources.html" target="_blank" rel="noopener">Gale Databases</a>
+          <a href="https://link.gale.com/apps/TERC?u=33835_nrplc" target="_blank" rel="noopener">Test Prep Resources</a>
+        </div>
+      </div>
+
+ <a href="services.html">Services</a>
+
+<div class="nav-dropdown">
+  <button class="nav-dropdown-btn">Support &#9662;</button>
+
+  <div class="nav-dropdown-menu">
+    
+    <!--
+    <a href="#">Friends of Union County Library</a>
+    <a href="#">Friends of Bradford County Library</a>
+    <a href="#">Friends of Baker County Library</a>
+    -->
+
+    <a href="https://www.jotform.com/261584323486059">Volunteer</a>
+
+  </div>
+</div>
+
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="/">Home</a> &rsaquo; Media Policy Including Social Media</p>
+    <h1>Media Policy Including Social Media</h1>
+    <p>Policy for official media and social media use by New River Public Library Cooperative and its member libraries.</p>
+    <div class="hero-rule"></div>
+  </div>
+</div>
+
+<div class="page-wrap" id="main-content">
+  <main class="content">
+    <div class="policy-section">
+      <h2>Media Policy Including Social Media</h2>
+
+      <h3>Purpose</h3>
+
+      <p>New River Public Library Cooperative and its member libraries in Baker, Bradford, and Union Counties, FL may sponsor social media services. Use of social media furthers the library's mission to connect library users and the community.</p>
+
+      <p>For purposes of this policy social media means newspaper, television, or radio or any website or application for online publication and commentary, including blogs, wikis, photo sharing, video sharing, instant messaging and other social media sites or applications such as Facebook or Twitter and others that may be developed.</p>
+
+      <p>The goals of the use of New River Public Library Cooperative sponsored social networking sites are:</p>
+
+      <ul>
+        <li>To inform the public of library resources and activities</li>
+        <li>To increase the public's use of library resources</li>
+        <li>To provide additional communication with members of the public</li>
+      </ul>
+
+      <p>Social networking sites created and used by individual libraries will use New River Public Library Cooperative webpage as the entry point to individual sites. New River Public Library Cooperative will determine what social media sites and software are used.</p>
+
+      <p>This Social Media Policy is written and to be used with other computer use, internet access, and internet safety policies adopted by the Cooperative.</p>
+
+      <h3>Policies/Procedures</h3>
+
+      <p>Use of social networking sites is considered official agency use and the use of social media is for the express purpose of communicating Cooperative and member libraries' interests, programs, and policies and procedures. Use of sponsored social media sites is not for personal use by staff or the public.</p>
+
+      <p>Many social networking sites are hosted by third parties. The Cooperative director and individual library directors or their designee are responsible for the creation, maintenance, and destruction of social media accounts. All directors are responsible for the security of social networking sites.</p>
+
+      <p>Staff authorized to use social networking sites for library/agency use will conduct themselves in a professional and courteous manner. Staff shall check facts, present balanced views, acknowledge and correct errors, check spelling and grammar. Published works should reflect positively on New River Public Library Cooperative, its member libraries and counties.</p>
+
+      <p>The Cooperative Director and library directors reserve the right not to publish any posting or to remove it later.</p>
+
+      <p>The role and utility of social networking sites will be evaluated periodically by the Cooperative director and individual library directors and use may be terminated at any time without notice to users.</p>
+
+      <p>Social media content is considered public record.</p>
+
+      <p>As with traditional library resources, the Cooperative and its member libraries do not act in place of parents. As with all library use, parents are encouraged to monitor their children's use of social networking sites and impart their values to their children.</p>
+
+      <h3>Privacy</h3>
+
+      <p>The Cooperative and member libraries do not collect, maintain, or otherwise use the personal information stored on any third party site in any way other than to communicate with users on that site.</p>
+
+      <p>All users are encouraged to protect their privacy by not posting personal information.</p>
+
+      <p>Users should be aware that third party websites and social networking tools have their own privacy policies and they should proceed accordingly.</p>
+
+      <h3>Guidelines for Posting</h3>
+
+      <ul>
+        <li>Library and county policies and codes of conduct apply to employees that engage in social networking activities while conducting library business.</li>
+        <li>Staff should be aware of user and reader privacy and not post personal information of other staff members or library users.</li>
+        <li>Staff will only make posts or contribute to conversations that relate directly to the services and events offered by the Cooperative and its member libraries.</li>
+        <li>Staff should not post confidential information relating to a library user's account or discuss it in any format as per Florida Statute 257.</li>
+        <li>Staff should not post or tag photographs of library events without express written permission of that person, whether staff or the public, or if a minor, the minor's parent or legal guardian.</li>
+        <li>Staff should not post copyrighted materials without permission or plagiarized materials.</li>
+        <li>Staff should not post spam, content that is objectionable, offensive, obscene, potentially libelous or content with personal attacks and insults, or that promotes hate or bullying.</li>
+        <li>Staff that post on sites not run by the Cooperative or its member libraries, and acting as a library representative, shall identify themselves as such and include their role.</li>
+        <li>Staff that use social media forums in their personal life are advised to be cautious in posting content on their personal sites.</li>
+        <li>Violations of social networking policies by library staff may be subject to disciplinary action.</li>
+      </ul>
+
+      <h3>Commenting</h3>
+
+      <p>The libraries recognize and respect differences in opinion. Where comments and moderation of comments are allowed, comments will be moderated by Directors or his/her designee. New River Public Library Cooperative and/or its member libraries reserve the right to modify or remove any message, postings, links, photographs or images that in its sole discretion:</p>
+
+      <ul>
+        <li>use offensive language or hate speech</li>
+        <li>are deemed to be abusive, defamatory or libelous</li>
+        <li>violate copyright, trademark right, or other intellectual property right of any third party</li>
+        <li>are considered to be spam or commercial in nature</li>
+        <li>are political or religious in nature</li>
+        <li>are off topic and do not relate to the library, its mission or activities</li>
+        <li>or otherwise inappropriate.</li>
+      </ul>
+
+      <p>The Cooperative and member libraries also reserve the right to edit or modify any comments and to bar any poster from posting subsequent messages to the libraries' social networking sites.</p>
+
+      <p>Notwithstanding the above, the Cooperative and member libraries are not obligated to take any such actions and are in no way responsible or liable for content posted by participants in a library sponsored social networking service.</p>
+
+      <h3>Disclaimer</h3>
+
+      <p>New River Public Library Cooperative, its member libraries and governing boards assume no liability regarding any event or interaction that takes place through any social networking service.</p>
+
+      <p>New River Public Library Cooperative, its member libraries and governing board do not review or endorse content created outside of the specific pages and sites created for the libraries by library staff.</p>
+
+      <p>Participation in New River Public Library Cooperative and its member libraries' social networking services implies agreement with all library policies.</p>
+
+      <p><em>Date Approved: June 9, 2011</em></p>
+    </div>
+  </main>
+
+  <aside>
+    <div class="sidebar-card">
+      <h4>About NRPLC</h4>
+      <ul>
+        <li><a href="about.html">About the Cooperative</a></li>
+        <li><a href="mission.html">Mission Statement</a></li>
+        <li><a href="commissioners.html">Board of Commissioners</a></li>
+        <li><a href="policies.html">Library Policies</a></li>
+        <li><a href="plan-of-service.html">Plan of Service</a></li>
+        <li><a href="board-agendas.html">Board Agendas</a></li>
+        <li><a href="board-minutes.html">Board Minutes</a></li>
+        <li><a href="fy2026-budget.html">FY2026 Budget</a></li>
+        <li><a href="strategic-plan.html">Strategic Plan</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>Our Libraries</h4>
+      <ul>
+        <li>
+          <strong><a href="/Bradford">Bradford County</a></strong><br>
+          <a href="tel:9043683911">(904) 368-3911</a>
+        </li>
+        <li>
+          <strong><a href="/Baker">Emily Taber (Baker)</a></strong><br>
+          <a href="tel:9042596464">(904) 259-6464</a>
+        </li>
+        <li>
+          <strong><a href="/Union">Mary C. Brown (Union)</a></strong><br>
+          <a href="tel:3864963432">(386) 496-3432</a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>New River Public Library Cooperative</h5>
+        <address>
+          10 S. Lake Ave<br>
+          Lake Butler, FL 32054<br>
+          <a href="tel:3864064262">(386) 406-4262</a><br>
+          <a href="https://nrplc.org">NRPLC.org</a>
+        </address>
+      </div>
+
+      <div class="footer-col">
+        <h5>Our Libraries</h5>
+
+        <p>
+          <strong><a href="/Bradford">Bradford County Public Library</a></strong><br>
+          456 West Pratt St, Starke, FL 32091<br>
+          <a href="tel:9043683911">(904) 368-3911</a>
+        </p>
+
+        <p>
+          <strong><a href="/Baker">Emily Taber Library</a></strong><br>
+          14 McIver Ave. West, Macclenny, FL 32063<br>
+          <a href="tel:9042596464">(904) 259-6464</a>
+        </p>
+
+        <p>
+          <strong><a href="/Union">Mary C. Brown Library</a></strong><br>
+          250 SE 5th Ave, Lake Butler, FL 32054<br>
+          <a href="tel:3864963432">(386) 496-3432</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>About</h5>
+        <a href="about.html">About the Cooperative</a>
+        <a href="mission.html">Mission Statement</a>
+        <a href="commissioners.html">Board of Commissioners</a>
+        <a href="policies.html">Library Policies</a>
+        <a href="plan-of-service.html">Plan of Service</a>
+        <a href="accessibility.html">Accessibility Statement</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="board-agendas.html">Board Agendas</a>
+        <a href="board-minutes.html">Board Minutes</a>
+        <a href="fy2026-budget.html">FY2026 Budget</a>
+        <a href="strategic-plan.html">Strategic Plan</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect on Facebook</h5>
+        <a href="https://www.facebook.com/emilytaberpubliclibrary" target="_blank" rel="noopener">Baker County Library</a>
+        <a href="https://www.facebook.com/bradfordlibrary" target="_blank" rel="noopener">Bradford County Library</a>
+        <a href="https://www.facebook.com/marycbrownpubliclibrary" target="_blank" rel="noopener">Union County Library</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 New River Public Library Cooperative. All rights reserved.</span>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-dropdown-btn').forEach(button => {
+  button.addEventListener('click', e => {
+    e.preventDefault();
+
+    document.querySelectorAll('.nav-dropdown-menu.active').forEach(menu => {
+      if (menu !== button.nextElementSibling) {
+        menu.classList.remove('active');
+      }
+    });
+
+    button.nextElementSibling.classList.toggle('active');
+  });
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+      menu.classList.remove('active');
+    });
+  }
+});
+</script>
+</body>
+</html>
